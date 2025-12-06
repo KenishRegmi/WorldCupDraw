@@ -1,447 +1,242 @@
-/* ============================================
-   WORLD CUP 2026 SIMULATOR - DESIGN SYSTEM
-   ============================================ */
+/* src/components/ThirdPlaceTable/ThirdPlaceTable.css */
 
-/* ===== CSS VARIABLES & THEME ===== */
-:root {
-  /* Color Palette */
-  --primary-blue: #1a2980;
-  --primary-teal: #26d0ce;
-  --secondary-blue: #3b82f6;
-  --secondary-teal: #10b981;
-  --accent-gold: #fbbf24;
-  --accent-red: #ef4444;
-  --accent-green: #10b981;
-  --accent-purple: #8b5cf6;
-  
-  /* Neutral Colors */
-  --neutral-50: #f8fafc;
-  --neutral-100: #f1f5f9;
-  --neutral-200: #e2e8f0;
-  --neutral-300: #cbd5e1;
-  --neutral-400: #94a3b8;
-  --neutral-500: #64748b;
-  --neutral-600: #475569;
-  --neutral-700: #334155;
-  --neutral-800: #1e293b;
-  --neutral-900: #0f172a;
-  
-  /* Semantic Colors */
-  --success: var(--accent-green);
-  --warning: var(--accent-gold);
-  --error: var(--accent-red);
-  --info: var(--secondary-blue);
-  
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
-  --gradient-success: linear-gradient(135deg, #10b981, #059669);
-  --gradient-warning: linear-gradient(135deg, #fbbf24, #f59e0b);
-  --gradient-error: linear-gradient(135deg, #ef4444, #dc2626);
-  --gradient-purple: linear-gradient(135deg, #8b5cf6, #7c3aed);
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
-  
-  /* Border Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 15px;
-  --radius-xl: 20px;
-  --radius-full: 9999px;
-  
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-normal: 250ms ease;
-  --transition-slow: 350ms ease;
-  
-  /* Spacing */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-2xl: 48px;
-  
-  /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'SF Mono', 'Roboto Mono', monospace;
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-  
-  /* Layout */
-  --max-width: 1600px;
-  --header-height: 80px;
-  --nav-height: 60px;
+.third-table {
+  max-width: 1200px;
+  margin: 0 auto 28px;
+  padding: 20px 20px 22px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
 }
 
-/* ===== RESET & BASE STYLES ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Empty */
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  color: var(--neutral-800);
-  background: var(--gradient-primary);
-  background-attachment: fixed;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ===== APP LAYOUT ===== */
-.app {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--space-xl);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ===== HEADER ===== */
-.app-header {
+.third-table--empty {
   text-align: center;
-  color: white;
-  margin-bottom: var(--space-2xl);
-  padding: var(--space-2xl);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-xl);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--shadow-lg);
 }
 
-.app-header h1 {
-  font-size: var(--font-size-4xl);
-  margin-bottom: var(--space-sm);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  font-weight: var(--font-weight-extrabold);
-  background: linear-gradient(135deg, white, #e0f2fe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.third-table__text {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #6b7280;
 }
 
-.app-header p {
-  font-size: var(--font-size-lg);
-  opacity: 0.9;
-  margin-bottom: var(--space-lg);
-  font-weight: var(--font-weight-medium);
+/* Top title & info */
+
+.third-table__title {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
 }
 
-.tournament-info {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-2xl);
-  margin-top: var(--space-lg);
-  font-size: var(--font-size-base);
-  opacity: 0.9;
-  flex-wrap: wrap;
+.third-table__info {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
 }
 
-.tournament-info span {
-  background: rgba(255, 255, 255, 0.15);
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-full);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.third-table__info-title {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-/* ===== NAVIGATION ===== */
-.app-nav {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-2xl);
-  flex-wrap: wrap;
+.third-table__info-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #4b5563;
 }
 
-.app-nav button {
-  padding: var(--space-lg) var(--space-xl);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  border: none;
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-  cursor: pointer;
-  transition: all var(--transition-normal);
+.third-table__info-list li + li {
+  margin-top: 2px;
+}
+
+/* Sections */
+
+.third-table__section {
+  margin-top: 16px;
+}
+
+.third-table__section-title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  min-width: 200px;
-  justify-content: center;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  gap: 6px;
+  color: #111827;
 }
 
-.app-nav button:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+.third-table__icon {
+  font-size: 18px;
 }
 
-.app-nav button.active {
-  background: white;
-  color: var(--primary-blue);
-  box-shadow: var(--shadow-lg);
-  border-color: transparent;
-}
+/* Cards grid */
 
-.nav-icon {
-  font-size: 1.4rem;
-}
-
-/* ===== MAIN CONTENT ===== */
-.app-main {
-  background: white;
-  border-radius: var(--radius-xl);
-  padding: var(--space-2xl);
-  box-shadow: var(--shadow-xl);
-  flex: 1;
-  margin-bottom: var(--space-2xl);
-}
-
-.groups-container {
+.third-table__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
 }
 
-/* ===== FOOTER ===== */
-.app-footer {
-  text-align: center;
-  color: white;
-  padding: var(--space-xl);
-  font-size: var(--font-size-sm);
-  opacity: 0.8;
-  margin-top: auto;
+.third-table__card {
+  display: flex;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
 }
 
-.disclaimer {
-  font-size: var(--font-size-xs);
-  opacity: 0.7;
-  margin-top: var(--space-sm);
-  max-width: 600px;
-  margin: var(--space-sm) auto 0;
-  line-height: 1.4;
+.third-table__card--qualified {
+  border-color: #bbf7d0;
 }
 
-/* ===== LOADING STATES ===== */
-.loading {
-  text-align: center;
-  padding: var(--space-2xl);
-  color: var(--neutral-500);
-  font-size: var(--font-size-lg);
+.third-table__card--eliminated {
+  border-color: #fecaca;
 }
 
-.loading::after {
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 3px solid var(--neutral-300);
-  border-top-color: var(--secondary-blue);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-left: var(--space-md);
+.third-table__card-rank {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+  width: 30px;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.third-table__card-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-/* ===== UTILITY CLASSES ===== */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-.text-gradient {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.third-table__card-name {
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.mt-xs { margin-top: var(--space-xs); }
-.mt-sm { margin-top: var(--space-sm); }
-.mt-md { margin-top: var(--space-md); }
-.mt-lg { margin-top: var(--space-lg); }
-.mt-xl { margin-top: var(--space-xl); }
-.mt-2xl { margin-top: var(--space-2xl); }
+.third-table__card-meta {
+  font-size: 11px;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
 
-.mb-xs { margin-bottom: var(--space-xs); }
-.mb-sm { margin-bottom: var(--space-sm); }
-.mb-md { margin-bottom: var(--space-md); }
-.mb-lg { margin-bottom: var(--space-lg); }
-.mb-xl { margin-bottom: var(--space-xl); }
-.mb-2xl { margin-bottom: var(--space-2xl); }
+.third-table__chip {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+}
 
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.gap-xs { gap: var(--space-xs); }
-.gap-sm { gap: var(--space-sm); }
-.gap-md { gap: var(--space-md); }
-.gap-lg { gap: var(--space-lg); }
+.third-table__stats {
+  font-variant-numeric: tabular-nums;
+}
 
-.grid { display: grid; }
-.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.third-table__fairplay {
+  font-size: 11px;
+  color: #4b5563;
+}
 
-/* ===== ANIMATIONS ===== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Assignment cards */
+
+.third-table__assign-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.third-table__assign-card {
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 8px 9px;
+  font-size: 11px;
+}
+
+.third-table__assign-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.third-table__assign-match {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+}
+
+.third-table__assign-vs {
+  color: #9ca3af;
+}
+
+.third-table__assign-team {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.third-table__assign-name {
+  font-weight: 600;
+  color: #111827;
+}
+
+.third-table__assign-group {
+  color: #6b7280;
+}
+
+.third-table__assign-detail {
+  margin-top: 4px;
+  color: #4b5563;
+}
+
+.third-table__assign-detail--note {
+  font-size: 10px;
+  color: #16a34a;
+}
+
+.third-table__assign-placeholder {
+  color: #6b7280;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .third-table__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--neutral-100);
-  border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--neutral-400);
-  border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--neutral-500);
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 1200px) {
-  .groups-container {
-    grid-template-columns: repeat(2, 1fr);
+  .third-table__assign-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  .app {
-    padding: var(--space-md);
+  .third-table {
+    padding: 16px 14px 18px;
   }
-  
-  .app-header {
-    padding: var(--space-xl);
-    margin-bottom: var(--space-xl);
+
+  .third-table__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
-  .app-header h1 {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .tournament-info {
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-  
-  .app-nav {
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-  
-  .app-nav button {
-    width: 100%;
-    min-width: auto;
-  }
-  
-  .groups-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .app-main {
-    padding: var(--space-xl);
+
+  .third-table__assign-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 480px) {
-  :root {
-    --space-xl: 24px;
-    --space-2xl: 32px;
-  }
-  
-  .app-header h1 {
-    font-size: var(--font-size-2xl);
-  }
-  
-  .app-header p {
-    font-size: var(--font-size-base);
-  }
-  
-  .app-nav button {
-    padding: var(--space-md);
-    font-size: var(--font-size-base);
+@media (max-width: 540px) {
+  .third-table__grid,
+  .third-table__assign-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,335 +1,295 @@
-/* MatchCard.css */
+/* src/components/MatchCard/MatchCard.css */
 
 .match-card {
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-  transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
-  max-width: 420px;
-  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
 }
 
-.match-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+/* State modifiers */
+
+.match-card--played {
+  border-color: #bbf7d0;
 }
 
-.match-card.played {
-  border-left: 6px solid #10b981;
-}
-
-.match-card.upcoming {
-  opacity: 0.98;
-}
-
-.match-card.final-match {
-  border: 3px solid #ec4899;
-  box-shadow: 0 15px 40px rgba(236, 72, 153, 0.3);
+.match-card--final {
+  border-width: 2px;
+  border-color: #db2777;
 }
 
 /* Header */
-.match-header {
-  padding: 14px 18px;
-  color: white;
+
+.match-card__header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-weight: 700;
+  justify-content: space-between;
+  border-left: 3px solid #6b7280;
+  padding-left: 8px;
+  margin-bottom: 8px;
 }
 
-.match-info {
+.match-card__header-main {
   display: flex;
   flex-direction: column;
+  gap: 2px;
+}
+
+.match-card__name {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+}
+
+.match-card__stage {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.match-card__stadium {
+  display: inline-flex;
+  align-items: center;
   gap: 4px;
+  font-size: 11px;
+  color: #6b7280;
 }
 
-.match-name {
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+.match-card__stadium-icon {
+  font-size: 13px;
 }
 
-.match-stage {
-  font-size: 0.85rem;
-  opacity: 0.95;
-  font-weight: 600;
+/* Body layout */
+
+.match-card__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.4fr);
+  align-items: center;
+  gap: 8px;
 }
 
-.match-stadium {
-  font-size: 0.9rem;
+.match-card__team {
   display: flex;
   align-items: center;
   gap: 6px;
-  opacity: 0.95;
 }
 
-.stadium-icon {
-  font-size: 1.1rem;
+.match-card__team--home {
+  justify-content: flex-start;
 }
 
-/* Body */
-.match-body {
-  padding: 20px;
+.match-card__team--away {
+  justify-content: flex-end;
 }
 
-/* Teams Container */
-.teams-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.team {
+.match-card__team-flag {
+  width: 30px;
+  height: 22px;
+  border-radius: 4px;
+  background: #e5e7eb;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
-  position: relative;
+  justify-content: center;
+  font-size: 16px;
 }
 
-.home-team {
-  flex-direction: row;
+.match-card__team-info {
+  display: flex;
+  flex-direction: column;
 }
 
-.away-team {
-  flex-direction: row-reverse;
+.match-card__team-info--right {
+  align-items: flex-end;
+}
+
+.match-card__team-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.match-card__team-name--right {
   text-align: right;
 }
 
-.team-flag {
-  width: 56px;
-  height: 42px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  background: #f1f5f9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  flex-shrink: 0;
-}
+/* Center section */
 
-.team-flag img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.team-details {
-  flex: 1;
-  padding: 0 16px;
-}
-
-.team-name {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #1e293b;
-}
-
-.team-group {
-  font-size: 0.8rem;
-  color: #64748b;
-  font-weight: 500;
-}
-
-.team-ranking {
-  font-size: 0.8rem;
-  color: #94a3b8;
-  margin-top: 2px;
-}
-
-/* VS Section */
-.vs-section {
+.match-card__center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  min-width: 80px;
+  gap: 3px;
 }
 
-.score-display {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 2rem;
-  font-weight: 900;
-}
-
-.score {
-  min-width: 40px;
-  text-align: center;
-}
-
-.home-score { color: #1e40af; }
-.away-score { color: #dc2626; }
-
-.score-divider {
-  color: #64748b;
-  font-weight: bold;
-}
-
-.vs-text {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #64748b;
-  background: #f1f5f9;
-  padding: 6px 16px;
-  border-radius: 8px;
-}
-
-.match-time {
-  font-size: 0.8rem;
-  color: #94a3b8;
-  font-weight: 600;
-}
-
-.winner-badge {
-  background: #10b981;
-  color: white;
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-weight: 700;
-}
-
-.team.winner {
-  background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), transparent);
-  border-radius: 12px;
-  padding: 8px;
-}
-
-/* Score Input */
-.score-input-section {
-  margin-top: 16px;
-  padding: 16px;
-  background: #f8fafc;
-  border-radius: 12px;
-  border: 2px dashed #cbd5e1;
-}
-
-.input-row {
-  display: flex;
+.match-card__score {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 4px;
+  min-width: 70px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
 }
 
-.score-input {
-  width: 70px;
-  height: 56px;
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: bold;
-  border: 3px solid #e2e8f0;
-  border-radius: 12px;
-  background: white;
+.match-card__score-num {
+  font-size: 18px;
+  font-weight: 800;
 }
 
-.score-input:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+.match-card__score-separator {
+  font-size: 16px;
+  color: #6b7280;
 }
 
-.input-divider {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #64748b;
+.match-card__score-vs {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9ca3af;
 }
 
-.submit-score-btn {
-  width: 100%;
-  padding: 12px;
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
+.match-card__time {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #6b7280;
 }
 
-.submit-score-btn:hover:not(:disabled) {
-  background: #2563eb;
-  transform: translateY(-1px);
-}
-
-.submit-score-btn:disabled {
-  background: #94a3b8;
-  cursor: not-allowed;
-}
-
-/* Requirements & Next Round */
-.match-requirements,
-.next-round-info {
-  margin-top: 16px;
-  padding: 12px;
-  background: #fef3c7;
-  border-radius: 10px;
-  font-size: 0.85rem;
+.match-card__winner {
+  margin-top: 2px;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fef9c3;
   color: #92400e;
 }
 
-.requirements-title {
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: #78350f;
+/* Editable inputs */
+
+.match-card__inputs {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dashed #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.requirements-list > div {
-  margin: 4px 0;
+.match-card__inputs-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
-.next-round-info {
-  background: #dbeafe;
-  color: #1e40af;
+.match-card__inputs-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.match-card__inputs-label {
+  font-size: 11px;
+  color: #6b7280;
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.match-card__input {
+  width: 44px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
   text-align: center;
+  font-size: 14px;
   font-weight: 600;
+  color: #111827;
 }
 
-/* Stage Colors (used in header) */
-.roundOf32 .match-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-.roundOf16 .match-header { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-.quarterFinals .match-header { background: linear-gradient(135deg, #10b981, #059669); }
-.semiFinals .match-header { background: linear-gradient(135deg, #f59e0b, #d97706); }
-.thirdPlace .match-header { background: linear-gradient(135deg, #ef4444, #dc2626); }
-.final .match-header { background: linear-gradient(135deg, #ec4899, #db2777); }
+.match-card__input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+}
+
+.match-card__inputs-separator {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.match-card__submit {
+  align-self: center;
+  margin-top: 2px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.match-card__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.match-card__submit:not(:disabled):hover {
+  background: #16a34a;
+}
+
+/* Requirements and next info */
+
+.match-card__requirements {
+  margin-top: 8px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px dashed #e5e7eb;
+  font-size: 11px;
+  color: #4b5563;
+}
+
+.match-card__requirements-title {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.match-card__requirements-body > div + div {
+  margin-top: 2px;
+}
+
+.match-card__next {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #6b7280;
+}
 
 /* Responsive */
-@media (max-width: 480px) {
-  .match-card {
-    border-radius: 12px;
+
+@media (max-width: 640px) {
+  .match-card__body {
+    grid-template-columns: 1fr;
   }
-  
-  .team-flag {
-    width: 48px;
-    height: 36px;
-    font-size: 24px;
+
+  .match-card__team--away,
+  .match-card__team--home {
+    justify-content: space-between;
   }
-  
-  .team-name {
-    font-size: 1rem;
-  }
-  
-  .score-display {
-    font-size: 1.6rem;
-  }
-  
-  .input-row {
-    gap: 8px;
-  }
-  
-  .score-input {
-    width: 60px;
-    height: 50px;
-    font-size: 1.4rem;
+
+  .match-card__center {
+    order: -1;
   }
 }

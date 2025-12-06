@@ -1,384 +1,308 @@
-/* ThirdPlaceCalculator.css */
+/* src/components/ThirdPlaceCalculator/ThirdPlaceCalculator.css */
 
-.third-place-calculator {
+.third-calc {
   max-width: 1100px;
-  margin: 0 auto 40px;
-  padding: 24px;
-  background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
-  border-radius: 16px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0 auto 24px;
+  padding: 18px 18px 20px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
 }
 
-.calculator-header {
+/* Empty state */
+
+.third-calc--empty {
+  text-align: center;
+}
+
+.third-calc__text {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Header */
+
+.third-calc__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 28px;
-  padding-bottom: 16px;
-  border-bottom: 3px solid #3b82f6;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
-.calculator-header h3 {
+.third-calc__title {
   margin: 0;
-  font-size: 2rem;
-  font-weight: 800;
-  color: #1e293b;
-  letter-spacing: 0.5px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
 }
 
-.toggle-details {
-  padding: 10px 20px;
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 0.95rem;
+.third-calc__toggle {
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 }
 
-.toggle-details:hover {
-  background: #2563eb;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+.third-calc__toggle:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
 }
 
-/* Summary Cards */
-.calculator-summary {
+/* Summary cards */
+
+.third-calc__summary {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  margin-bottom: 32px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-.summary-card {
-  background: white;
+.third-calc__summary-card {
+  padding: 10px 11px;
   border-radius: 14px;
-  padding: 24px;
-  text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.summary-card:hover {
-  transform: translateY(-8px);
-}
-
-.summary-card.qualified {
-  border-left: 8px solid #10b981;
-}
-
-.summary-card.eliminated {
-  border-left: 8px solid #ef4444;
-}
-
-.summary-card.total {
-  border-left: 8px solid #3b82f6;
-}
-
-.summary-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #475569;
-  margin-bottom: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.summary-count {
-  font-size: 3.5rem;
-  font-weight: 900;
-  margin: 12px 0;
+.third-calc__summary-card--qualified {
+  border-color: #bbf7d0;
 }
 
-.qualified .summary-count { color: #10b981; }
-.eliminated .summary-count { color: #ef4444; }
-.total .summary-count { color: #3b82f6; }
-
-.summary-desc {
-  font-size: 1rem;
-  color: #64748b;
-  font-weight: 500;
+.third-calc__summary-card--eliminated {
+  border-color: #fecaca;
 }
 
-/* Ranking Table */
-.ranking-table {
-  background: white;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-  margin-bottom: 32px;
+.third-calc__summary-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
 }
 
-.ranking-table h4 {
-  margin: 0;
-  padding: 20px;
-  background: linear-gradient(135deg, #1e293b, #334155);
-  color: white;
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 700;
+.third-calc__summary-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
 }
 
-.ranking-table table {
+.third-calc__summary-desc {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Ranking table */
+
+.third-calc__table {
+  margin-bottom: 14px;
+}
+
+.third-calc__section-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.third-calc__ranking-table {
   width: 100%;
   border-collapse: collapse;
-}
-
-.ranking-table th {
-  background: #f1f5f9;
-  padding: 16px 12px;
-  text-align: center;
-  font-weight: 700;
-  color: #1e293b;
-  font-size: 0.95rem;
-  border-bottom: 2px solid #e2e8f0;
-}
-
-.ranking-table td {
-  padding: 14px 12px;
-  text-align: center;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.qualifying-row {
-  background-color: #dcfce7;
-  font-weight: 600;
-}
-
-.eliminated-row {
-  background-color: #fee2e2;
-  color: #991b1b;
-}
-
-.rank-cell {
-  font-weight: 800;
-  font-size: 1.1rem;
-}
-
-.team-cell {
-  text-align: left !important;
-  padding-left: 20px;
-}
-
-.team-name {
-  font-weight: 700;
-  color: #1e293b;
-}
-
-.group-badge {
-  display: inline-block;
-  background: #3b82f6;
-  color: white;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-left: 8px;
-}
-
-.points-cell {
-  font-weight: 700;
-  color: #1e40af;
-}
-
-.gd-cell {
-  font-weight: 600;
-}
-
-.gd-cell::before {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 6px;
-}
-
-tr:nth-child(-n+8) .gd-cell::before { background: #10b981; }
-tr:nth-child(n+9) .gd-cell::before { background: #ef4444; }
-
-.status-badge {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.status-badge.qualified {
-  background: #10b981;
-  color: white;
-}
-
-.status-badge.eliminated {
-  background: #ef4444;
-  color: white;
-}
-
-/* Details Section */
-.calculation-details {
-  background: white;
-  border-radius: 14px;
-  padding: 28px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  margin-top: 32px;
-}
-
-.calculation-details h4 {
-  text-align: center;
-  font-size: 1.6rem;
-  color: #1e293b;
-  margin-bottom: 24px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid #3b82f6;
-}
-
-.criteria-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
-  margin-bottom: 32px;
-}
-
-.criterion h5 {
-  color: #1e40af;
-  font-size: 1.2rem;
-  margin-bottom: 12px;
-}
-
-.criterion ol, .criterion ul {
-  background: #f8fafc;
-  padding: 16px 20px;
-  border-radius: 10px;
-  border-left: 5px solid #3b82f6;
-}
-
-.criterion li {
-  margin: 10px 0;
-  line-height: 1.6;
-}
-
-/* Assignment Preview */
-.assignment-preview h5 {
-  text-align: center;
-  font-size: 1.4rem;
-  color: #1e293b;
-  margin-bottom: 20px;
-}
-
-.assignment-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.assignment-card {
-  background: #f8fafc;
-  border: 2px solid #e2e8f0;
   border-radius: 12px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+  font-size: 12px;
 }
 
-.assignment-card:hover {
-  border-color: #3b82f6;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+.third-calc__ranking-table thead {
+  background: #f3f4f6;
 }
 
-.assignment-card .match-header {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  color: white;
-  padding: 12px 16px;
+.third-calc__ranking-table th,
+.third-calc__ranking-table td {
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.third-calc__ranking-table th {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+
+.third-calc__row:nth-child(even) {
+  background: #f9fafb;
+}
+
+.third-calc__row:nth-child(odd) {
+  background: #ffffff;
+}
+
+.third-calc__row--qualified {
+  box-shadow: inset 3px 0 0 #22c55e;
+}
+
+.third-calc__row--eliminated {
+  box-shadow: inset 3px 0 0 #ef4444;
+}
+
+.third-calc__cell-team {
+  text-align: left;
+}
+
+.third-calc__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  font-size: 11px;
+  color: #1d4ed8;
+}
+
+.third-calc__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.third-calc__status--ok {
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+.third-calc__status--out {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+/* Details / assignments */
+
+.third-calc__details {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #e5e7eb;
+}
+
+.third-calc__assign-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.third-calc__assign-card {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 8px 9px;
+  font-size: 11px;
+}
+
+.third-calc__assign-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 3px;
+}
+
+.third-calc__assign-match {
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
 }
 
-.vs-text {
-  font-size: 0.9rem;
-  opacity: 0.95;
+.third-calc__assign-vs {
+  color: #9ca3af;
 }
 
-.assignment-content {
-  padding: 16px;
-}
-
-.assigned-team {
+.third-calc__assign-team {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  font-weight: 700;
-  color: #1e293b;
+  flex-direction: column;
+  gap: 1px;
 }
 
-.team-group {
-  color: #64748b;
-  font-weight: 500;
+.third-calc__assign-name {
+  font-weight: 600;
+  color: #111827;
 }
 
-.allowed-groups {
-  font-size: 0.85rem;
-  color: #475569;
-  background: #e0f2fe;
-  padding: 8px 12px;
-  border-radius: 8px;
+.third-calc__assign-group {
+  color: #6b7280;
 }
 
-.no-assignment {
-  color: #64748b;
-  font-style: italic;
-  text-align: center;
-  padding: 16px;
+.third-calc__assign-allowed {
+  margin-top: 4px;
+  color: #4b5563;
 }
 
-/* Empty State */
-.third-place-empty {
-  text-align: center;
-  padding: 80px 20px;
-  color: #64748b;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.third-place-empty h3 {
-  font-size: 1.8rem;
-  margin-bottom: 16px;
-  color: #1e293b;
+.third-calc__assign-placeholder {
+  color: #6b7280;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .calculator-header {
+
+@media (max-width: 960px) {
+  .third-calc__summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .third-calc__assign-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .third-calc {
+    padding: 16px 14px 18px;
+  }
+
+  .third-calc__header {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .third-calc__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .third-calc__assign-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .third-calc__ranking-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .third-calc__assign-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .third-calc__toggle {
+    width: 100%;
     text-align: center;
-  }
-  
-  .criteria-list {
-    grid-template-columns: 1fr;
-  }
-  
-  .assignment-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .ranking-table th,
-  .ranking-table td {
-    padding: 10px 6px;
-    font-size: 0.9rem;
   }
 }

@@ -1,249 +1,263 @@
-/* GroupInput.css */
+/* src/components/GroupInput/GroupInput.css */
 
-.group-input-container {
-  max-width: 900px;
-  margin: 0 auto;
+.group-input {
+  max-width: 960px;
+  margin: 0 auto 24px;
   padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background-color: #f8f9fa;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  margin-bottom: 30px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
 
-.group-selector h3 {
-  margin: 0 0 16px 0;
-  font-size: 1.4rem;
-  color: #1a1a1a;
-  text-align: center;
+/* Selector */
+
+.group-input__selector {
+  margin-bottom: 18px;
 }
 
-.group-buttons {
+.group-input__title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.group-input__buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
-.group-button {
-  padding: 10px 16px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: 2px solid #d0d0d0;
-  border-radius: 8px;
-  background-color: white;
-  color: #444;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.group-button:hover {
-  border-color: #007bff;
-  background-color: #f0f8ff;
-}
-
-.group-button.active {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
-}
-
-/* Match Inputs */
-.match-inputs h4 {
-  margin: 24px 0 16px 0;
-  font-size: 1.3rem;
-  color: #2c3e50;
-  text-align: center;
-}
-
-.match-input {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-@media (min-width: 640px) {
-  .match-input {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
-.teams {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  font-size: 1.05rem;
-  font-weight: 500;
-}
-
-.team-name {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.vs {
-  color: #888;
-  font-weight: bold;
-}
-
-.score-inputs {
-  display: flex;
-  align-items: center;
   gap: 8px;
 }
 
-.score-input {
-  width: 60px;
-  height: 44px;
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: 2px solid #ced4da;
-  border-radius: 6px;
-  padding: 0 8px;
+.group-input__button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
-.score-input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+.group-input__button:hover {
+  background: #e5edf7;
+  border-color: #cbd5f5;
 }
 
-.dash {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #555;
+.group-input__button--active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
 }
 
-.match-status {
-  font-size: 0.9rem;
+/* Matches list */
+
+.group-input__matches {
+  margin-bottom: 18px;
+}
+
+.group-input__matches-title {
+  margin: 0 0 10px;
+  font-size: 16px;
   font-weight: 600;
-  padding: 6px 10px;
-  border-radius: 6px;
-  align-self: flex-start;
+  color: #111827;
 }
 
-.match-status.played {
-  background-color: #d4edda;
-  color: #155724;
+.group-input__match {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 8px;
 }
 
-.match-status.pending {
-  background-color: #f8d7da;
-  color: #721c24;
+.group-input__teams {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
-/* Action Buttons */
-.actions-panel {
+.group-input__team-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.group-input__vs {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Score inputs */
+
+.group-input__score-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.group-input__score-input {
+  width: 52px;
+  height: 34px;
+  padding: 0 6px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.group-input__score-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+}
+
+.group-input__dash {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Match status */
+
+.group-input__match-status {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-align: center;
+}
+
+.group-input__match-status--played {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.group-input__match-status--pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Actions */
+
+.group-input__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  margin: 30px 0;
+  gap: 10px;
+  margin: 14px 0;
 }
 
-.action-button {
-  padding: 12px 20px;
-  font-size: 1rem;
+.group-input__action {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #111827;
+  font-size: 13px;
   font-weight: 600;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.15s ease;
 }
 
-.action-button.reset {
-  background-color: #dc3545;
-  color: white;
+.group-input__action:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
 }
 
-.action-button.export {
-  background-color: #28a745;
-  color: white;
+.group-input__action--reset {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #b91c1c;
 }
 
-.action-button.import {
-  background-color: #6c757d;
-  color: white;
+.group-input__action--export {
+  background: #dcfce7;
+  border-color: #bbf7d0;
+  color: #166534;
 }
 
-.action-button:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+.group-input__action--import {
+  background: #e0f2fe;
+  border-color: #bae6fd;
+  color: #075985;
 }
 
-/* Import Panel */
-.import-panel {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.group-input__action--cancel {
+  background: #f3f4f6;
 }
 
-.import-panel h4 {
-  margin-top: 0;
-  color: #2c3e50;
+/* Import panel */
+
+.group-input__import-panel {
+  margin-top: 6px;
+  padding: 14px 14px 12px;
+  border-radius: 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
 }
 
-.import-panel p {
-  font-size: 0.9rem;
-  color: #666;
-  margin: 8px 0 12px;
+.group-input__import-title {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-.import-textarea {
+.group-input__import-hint {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.group-input__import-textarea {
   width: 100%;
-  padding: 12px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.95rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  min-height: 110px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  font-size: 12px;
   resize: vertical;
 }
 
-.import-actions {
-  margin-top: 16px;
+.group-input__import-textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+}
+
+.group-input__import-actions {
+  margin-top: 8px;
   display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-}
-
-.import-actions .action-button {
-  padding: 10px 18px;
-  font-size: 0.95rem;
-}
-
-.import-actions .cancel {
-  background-color: #6c757d;
-  color: white;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 /* Responsive */
-@media (max-width: 480px) {
-  .group-input-container {
+
+@media (max-width: 768px) {
+  .group-input {
     padding: 16px;
   }
-  
-  .teams {
-    font-size: 0.95rem;
+
+  .group-input__match {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
   }
-  
-  .score-input {
-    width: 50px;
-    height: 40px;
+
+  .group-input__actions {
+    flex-direction: column;
+  }
+
+  .group-input__action {
+    width: 100%;
+    text-align: center;
   }
 }
