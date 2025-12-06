@@ -85,9 +85,8 @@ const AppContent = () => {
         )}
       </main>
 
-      <footer className="wc-app__footer">
-        <span>Unofficial World Cup 2026 simulator.</span>
-        <span>Format: 12 groups of 4, 32‑team knockout.</span>
+      <footer style={{ marginTop: '2rem', textAlign: 'center', fontSize: '0.85rem', color: '#777' }}>
+        © {new Date().getFullYear()} Made by Kenish Regmi
       </footer>
     </div>
   );
