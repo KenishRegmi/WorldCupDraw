@@ -1,0 +1,210 @@
+/* GroupTable.css */
+
+.group-table-container {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.group-header {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.group-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.completion-status {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.completion-status.completed {
+  background-color: #10b981;
+}
+
+.completion-status.in-progress {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Table Styling */
+.standings-table {
+  overflow-x: auto;
+  padding: 0 8px;
+}
+
+.standings-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.standings-table th {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 14px 8px;
+  text-align: center;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.standings-table td {
+  padding: 14px 8px;
+  text-align: center;
+  font-size: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.standings-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Row Highlighting */
+tr.qualifying {
+  background-color: #dcfce7;
+  font-weight: 600;
+}
+
+tr.third-place {
+  background-color: #fef3c7;
+}
+
+tr.eliminated {
+  background-color: #fee2e2;
+  color: #991b1b;
+  opacity: 0.9;
+}
+
+/* Team Name with Badge */
+.team-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+  font-weight: 600;
+  padding-left: 12px;
+}
+
+.team-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.pos-1 { background-color: #fbbf24; } /* Gold */
+.pos-2 { background-color: #94a3b8; } /* Silver */
+.pos-3 { background-color: #f97316; } /* Bronze */
+.pos-4 { background-color: transparent; }
+
+/* Stats */
+.points {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #1e40af;
+}
+
+.positive { color: #16a34a; font-weight: 600; }
+.negative { color: #dc2626; font-weight: 600; }
+
+/* Qualification Info */
+.qualification-info {
+  padding: 16px 20px;
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.qualification-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.qualifying-badge {
+  background-color: #22c55e;
+}
+
+.third-place-badge {
+  background-color: #f59e0b;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .group-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .group-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .standings-table th,
+  .standings-table td {
+    padding: 10px 4px;
+    font-size: 0.9rem;
+  }
+
+  .team-name {
+    padding-left: 6px;
+    font-size: 0.95rem;
+  }
+
+  .team-badge {
+    width: 24px;
+    height: 24px;
+  }
+
+  .qualification-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .standings-table th,
+  .standings-table td {
+    font-size: 0.85rem;
+    padding: 8px 2px;
+  }
+
+  .points {
+    font-size: 1rem;
+  }
+}

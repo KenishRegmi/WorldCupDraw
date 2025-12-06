@@ -1,0 +1,249 @@
+/* GroupInput.css */
+
+.group-input-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.group-selector h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.group-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.group-button {
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid #d0d0d0;
+  border-radius: 8px;
+  background-color: white;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.group-button:hover {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+}
+
+.group-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Match Inputs */
+.match-inputs h4 {
+  margin: 24px 0 16px 0;
+  font-size: 1.3rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.match-input {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 640px) {
+  .match-input {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.teams {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.team-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vs {
+  color: #888;
+  font-weight: bold;
+}
+
+.score-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.score-input {
+  width: 60px;
+  height: 44px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 2px solid #ced4da;
+  border-radius: 6px;
+  padding: 0 8px;
+}
+
+.score-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.dash {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.match-status {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  align-self: flex-start;
+}
+
+.match-status.played {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.match-status.pending {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Action Buttons */
+.actions-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.action-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-button.reset {
+  background-color: #dc3545;
+  color: white;
+}
+
+.action-button.export {
+  background-color: #28a745;
+  color: white;
+}
+
+.action-button.import {
+  background-color: #6c757d;
+  color: white;
+}
+
+.action-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Import Panel */
+.import-panel {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.import-panel h4 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.import-panel p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 8px 0 12px;
+}
+
+.import-textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.import-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.import-actions .action-button {
+  padding: 10px 18px;
+  font-size: 0.95rem;
+}
+
+.import-actions .cancel {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .group-input-container {
+    padding: 16px;
+  }
+  
+  .teams {
+    font-size: 0.95rem;
+  }
+  
+  .score-input {
+    width: 50px;
+    height: 40px;
+  }
+}
