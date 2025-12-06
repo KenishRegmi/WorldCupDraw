@@ -141,7 +141,7 @@ export const SimulatorProvider = ({ children }) => {
 
   const groupHasAnyMatch = (group) => group.matches.some((m) => m.played);
 
-  // Use current leaders to fill Round of 32
+  // Use current leaders + third-place ranking to fill Round of 32
   const fillRoundOf32 = useCallback(
     (groupsState) => {
       const winners = {};
@@ -157,102 +157,67 @@ export const SimulatorProvider = ({ children }) => {
 
       const assignments = {};
 
-      // ---- fixed winner / runner-up matches ----
+      // -------- fixed winner / runner-up matches --------
+      if (runners.A) assignments[73] = { ...(assignments[73] || {}), home: runners.A };
+      if (runners.B) assignments[73] = { ...(assignments[73] || {}), away: runners.B };
 
-      // Match 73: Group A runners-up vs Group B runners-up
-      if (runners.A) {
-        assignments[73] = { ...(assignments[73] || {}), home: runners.A };
-      }
-      if (runners.B) {
-        assignments[73] = { ...(assignments[73] || {}), away: runners.B };
-      }
+      if (winners.F) assignments[75] = { ...(assignments[75] || {}), home: winners.F };
+      if (runners.C) assignments[75] = { ...(assignments[75] || {}), away: runners.C };
 
-      // Match 75: Group F winners vs Group C runners-up
-      if (winners.F) {
-        assignments[75] = { ...(assignments[75] || {}), home: winners.F };
-      }
-      if (runners.C) {
-        assignments[75] = { ...(assignments[75] || {}), away: runners.C };
-      }
+      if (winners.C) assignments[76] = { ...(assignments[76] || {}), home: winners.C };
+      if (runners.F) assignments[76] = { ...(assignments[76] || {}), away: runners.F };
 
-      // Match 76: Group C winners vs Group F runners-up
-      if (winners.C) {
-        assignments[76] = { ...(assignments[76] || {}), home: winners.C };
-      }
-      if (runners.F) {
-        assignments[76] = { ...(assignments[76] || {}), away: runners.F };
-      }
+      if (runners.E) assignments[78] = { ...(assignments[78] || {}), home: runners.E };
+      if (runners.I) assignments[78] = { ...(assignments[78] || {}), away: runners.I };
 
-      // Match 78: Group E runners-up vs Group I runners-up
-      if (runners.E) {
-        assignments[78] = { ...(assignments[78] || {}), home: runners.E };
-      }
-      if (runners.I) {
-        assignments[78] = { ...(assignments[78] || {}), away: runners.I };
-      }
+      if (runners.K) assignments[83] = { ...(assignments[83] || {}), home: runners.K };
+      if (runners.L) assignments[83] = { ...(assignments[83] || {}), away: runners.L };
 
-      // Match 83: Group K runners-up vs Group L runners-up
-      if (runners.K) {
-        assignments[83] = { ...(assignments[83] || {}), home: runners.K };
-      }
-      if (runners.L) {
-        assignments[83] = { ...(assignments[83] || {}), away: runners.L };
-      }
+      if (winners.H) assignments[84] = { ...(assignments[84] || {}), home: winners.H };
+      if (runners.J) assignments[84] = { ...(assignments[84] || {}), away: runners.J };
 
-      // Match 84: Group H winners vs Group J runners-up
-      if (winners.H) {
-        assignments[84] = { ...(assignments[84] || {}), home: winners.H };
-      }
-      if (runners.J) {
-        assignments[84] = { ...(assignments[84] || {}), away: runners.J };
-      }
+      if (runners.D) assignments[88] = { ...(assignments[88] || {}), home: runners.D };
+      if (runners.G) assignments[88] = { ...(assignments[88] || {}), away: runners.G };
 
-      // Match 88: Group D runners-up vs Group G runners-up
-      if (runners.D) {
-        assignments[88] = { ...(assignments[88] || {}), home: runners.D };
-      }
-      if (runners.G) {
-        assignments[88] = { ...(assignments[88] || {}), away: runners.G };
-      }
+      // -------- always set the known "winner" side for third-place matches --------
+      if (winners.E) assignments[74] = { ...(assignments[74] || {}), home: winners.E };
+      if (winners.I) assignments[77] = { ...(assignments[77] || {}), home: winners.I };
+      if (winners.A) assignments[79] = { ...(assignments[79] || {}), home: winners.A };
+      if (winners.L) assignments[80] = { ...(assignments[80] || {}), home: winners.L };
+      if (winners.D) assignments[81] = { ...(assignments[81] || {}), home: winners.D };
+      if (winners.G) assignments[82] = { ...(assignments[82] || {}), home: winners.G };
+      if (winners.B) assignments[85] = { ...(assignments[85] || {}), home: winners.B };
+      if (winners.K) assignments[87] = { ...(assignments[87] || {}), home: winners.K };
 
-      // ---- third-place slots ----
-      // only once all groups have at least one match and 8 thirds exist
-
-      const allGroupsStarted = Object.values(groupsState).every(groupHasAnyMatch);
-      if (allGroupsStarted) {
-        const thirds = calculateThirdPlaceTeams(groupsState);
-        setThirdPlaceTeams(thirds);
-
-        const qualifiedThirds = thirds.slice(0, 8);
-        if (qualifiedThirds.length === 8) {
-          const thirdAssignments = assignThirdPlaceTeams(qualifiedThirds);
-
-          knockoutFormat.roundOf32.forEach((templateMatch) => {
-            const id = templateMatch.id;
-            const thirdTeam = thirdAssignments[id];
-            if (!thirdTeam) return;
-
-            const [fixedGroup] = templateMatch.groupRequirements;
-            if (!fixedGroup || !winners[fixedGroup]) return;
-
-            const winnerSideIsHome = templateMatch.teams[0].toLowerCase().includes('winners');
-            if (winnerSideIsHome) {
-              assignments[id] = {
-                ...(assignments[id] || {}),
-                home: winners[fixedGroup],
-                away: thirdTeam,
-              };
-            } else {
-              assignments[id] = {
-                ...(assignments[id] || {}),
-                home: thirdTeam,
-                away: winners[fixedGroup],
-              };
-            }
-          });
+      // -------- third-place side: only from groups with matches --------
+      const groupsWithMatches = {};
+      Object.keys(groupsState).forEach((gid) => {
+        const g = groupsState[gid];
+        if (groupHasAnyMatch(g)) {
+          groupsWithMatches[gid] = g;
         }
-      } else {
-        setThirdPlaceTeams([]);
+      });
+
+      const thirds = calculateThirdPlaceTeams(groupsWithMatches);
+      setThirdPlaceTeams(thirds);
+
+      const qualifiedThirds = thirds.slice(0, 8);
+      if (qualifiedThirds.length === 8) {
+        const thirdAssignments = assignThirdPlaceTeams(qualifiedThirds);
+
+        Object.entries(thirdAssignments).forEach(([idStr, thirdTeam]) => {
+          const id = Number(idStr);
+
+          // safety: only allow if that third's own group has started
+          const thirdGroupStarted = groupHasAnyMatch(groupsState[thirdTeam.group]);
+          if (!thirdGroupStarted) return;
+
+          // for all these matches, third-place team is the away side
+          assignments[id] = {
+            ...(assignments[id] || {}),
+            away: thirdTeam,
+          };
+        });
       }
 
       return assignments;
@@ -353,7 +318,7 @@ export const SimulatorProvider = ({ children }) => {
           },
         };
 
-        // recompute Round of 32 using current leaders and thirds logic
+        // recompute Round of 32 using current leaders and third-place logic
         const r32Assignments = fillRoundOf32(newGroups);
         setKnockout((prevKo) => {
           const next = JSON.parse(JSON.stringify(prevKo));
